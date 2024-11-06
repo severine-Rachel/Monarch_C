@@ -1,0 +1,1 @@
+/usr/bin/cc -O3 -g -fsanitize=address  CMakeFiles/Executable.dir/src/main.c.o -o Executable  -lm 
