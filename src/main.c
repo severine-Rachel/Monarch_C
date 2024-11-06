@@ -56,7 +56,7 @@ int main() {
     int ** population = generate_population(num_tasks, num_monarch);
 
     //printDoubleTable(costTable, num_nodes, num_tasks, "Cost table :\n");
-    printIntTable(population, num_monarch, num_tasks, "Population table :\n");
+    //printIntTable(population, num_monarch, num_tasks, "Population table :\n");
 
     int **swarm1 = (int **)malloc(num_swarm * sizeof(int *));
     int **swarm2 = (int **)malloc(num_swarm * sizeof(int *));
@@ -78,22 +78,22 @@ int main() {
         }
     }
     
-    printIntTable(swarm1, num_swarm, num_tasks, "Swarm 1 :\n");
-    printIntTable(swarm2, num_swarm, num_tasks, "Swarm 2 :\n");
+    //printIntTable(swarm1, num_swarm, num_tasks, "Swarm 1 :\n");
+    //printIntTable(swarm2, num_swarm, num_tasks, "Swarm 2 :\n");
 
     swarm1 = migration_operator(swarm1, swarm2, num_swarm, num_tasks, 0.5);
     swarm2 = adjusting_operator(swarm1, swarm2, population, 0.5, 1, num_swarm, num_tasks, costTable, delayTable);
 
     printf("\n ________________________________________\n\n POST MIGRATION \n ________________________________________\n ");
-    printIntTable(swarm1, num_swarm, num_tasks, "Swarm 1 :\n");
-    printIntTable(swarm2, num_swarm, num_tasks, "Swarm 2 :\n");
+    //printIntTable(swarm1, num_swarm, num_tasks, "Swarm 1 :\n");
+    //printIntTable(swarm2, num_swarm, num_tasks, "Swarm 2 :\n");
     int n_all = num_monarch+num_swarm*2;
     int ** AllMonarch = Assembler(population, swarm1, swarm2, num_monarch, num_swarm, num_tasks);
-    printIntTable(AllMonarch, n_all, num_tasks, "All Monarch :\n");
+    //printIntTable(AllMonarch, n_all, num_tasks, "All Monarch :\n");
 
 
     PopulationSelection(&population, AllMonarch, num_monarch, n_all, costTable, delayTable, num_tasks);
-    printIntTable(population, num_monarch, num_tasks, "Population table :\n");
+    //printIntTable(population, num_monarch, num_tasks, "Population table :\n");
     printf("\n ________________________________________\n\n FIN \n ________________________________________\n ");
     free2DTable((void**)costTable, num_nodes);
     free2DTable((void**)delayTable, num_nodes);

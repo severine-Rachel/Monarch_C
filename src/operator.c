@@ -33,7 +33,7 @@ int** adjusting_operator(int **NP1, int **NP2, int ** population, float p, int b
             float tirage = (float)rand() / RAND_MAX;
             if (tirage < p) {
                 int *bestMonarch = (int *)calloc(n_cols, sizeof(int));
-                determineBestMonarch(population, costTable, delayTable, n_cols, bin, &bestMonarch);
+                determineBestMonarch(population, costTable, delayTable, n_cols, bin, &bestMonarch, n_rows);
                 NP2[indexMonarch][indexGenome] = bestMonarch[indexGenome];
                 free(bestMonarch);
             } else {

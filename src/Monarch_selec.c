@@ -6,29 +6,32 @@
 
 void PopulationSelection(int *** population, int ** allMonarch, int n_pop, int n_all, double ** costTable, double ** delayTable, int n_cols){
     int newPopSize = 0;
-    
     while (newPopSize < n_pop){
         printIntTable(allMonarch, n_all, n_cols, "All monarch 1 :\n");
         int **Front = NULL;
         int **Second = NULL;
         int frontSize = 0, secondSize = 0;
-        dominationSort(allMonarch, costTable, delayTable, n_cols, &Front, &Second, &frontSize, &secondSize);
+        dominationSort(allMonarch, costTable, delayTable, n_cols, &Front, &Second, &frontSize, &secondSize, n_all);
         for(int i = 0 + newPopSize; i < frontSize + newPopSize; i++){
             for(int j = 0; j < n_cols; j++){
                 (*population)[i][j] =  Front[i - newPopSize][j];
             }
         }
-
+        int **newAllMonarch = deepcopy(Second, secondSize, n_cols);
         free2DTable((void**)allMonarch, n_all);
-        int **allMonarch = deepcopy(Second, secondSize, n_cols); 
+        allMonarch = newAllMonarch;
+        //free2DTable((void**)newAllMonarch, n_all);
+        n_all = secondSize;
+        printIntTable(allMonarch, n_all, n_cols, "All monarch 2 :\n");
         free2DTable((void**)Front, frontSize);
         free2DTable((void**)Second, secondSize);
         newPopSize = newPopSize + frontSize;
+        printIntTable((*population), newPopSize, n_cols, "Population après ajout :\n");
         
         #ifdef false
         if (frontSize > n_pop){
             while(frontSize > n_pop){
-                int indexWorstMonarch = determineWorstMonarch(Front, costTable, delayTable, n_cols);     
+                int indexWorstMonarch = determineWorstMonarch(Front, costTable, delayTable, n_cols, frontSize);     
                 int **newFront = malloc((frontSize - 1) * sizeof(int *));
                 int newRow = 0;
                 for (int i = 0; i < frontSize; i++) {

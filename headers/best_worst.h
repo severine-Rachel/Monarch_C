@@ -1,5 +1,5 @@
 #ifndef BESTWORST
 #define BESTWORST
-void determineBestMonarch(int ** population, double ** costTable, double ** delayTable, int num_cols, int bin, int ** bestMonarch);
-int determineWorstMonarch(int ** Population, double ** costTable, double ** delayTable, int num_cols);
+void determineBestMonarch(int ** population, double ** costTable, double ** delayTable, int num_cols, int bin, int ** bestMonarch, int num_rows);
+int determineWorstMonarch(int ** Population, double ** costTable, double ** delayTable, int num_cols, int num_rows);
 #endif

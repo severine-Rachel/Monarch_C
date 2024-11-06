@@ -34,62 +34,38 @@ int is_dominated(int i1, int i2, int * monarch1, int *monarch2, double ** costTa
 }
 
 //vérifier que la fonction prend bien des population de monarch de toutes tailles
-void dominationSort(int ** GroupMonarchs, double ** costTable, double ** delayTable, int num_cols, int *** Front, int ***Second, int *frontSize, int *secondSize)
+void dominationSort(int ** GroupMonarchs, double ** costTable, double ** delayTable, int num_cols, int *** Front, int ***Second, int *frontSize, int *secondSize, int n_rows)
 {
     *frontSize = 0;
     *secondSize = 0;
-    for (int i1 = 0; i1 < 2; i1++) {
+    for (int i1 = 0; i1 < n_rows; i1++) {
         int dominated_coeffiscient = 0;
-        for (int i2 = 0; i2 < 2; i2++) {
-            int bool = is_dominated(i1, i2, GroupMonarchs[i1], GroupMonarchs[i2], costTable, delayTable, num_cols);
-            //printf("%d", bool);
-            if (bool) {
-                dominated_coeffiscient++;
-            }
-        }
-        //printf("\n\n %d\n", dominated_coeffiscient);
-        if (dominated_coeffiscient == 0) {
+        for (int i2 = 0; i2 < n_rows; i2++) 
+                dominated_coeffiscient += is_dominated(i1, i2, GroupMonarchs[i1], GroupMonarchs[i2], costTable, delayTable, num_cols);
+        if (dominated_coeffiscient == 0) 
             (*frontSize)++;
-        } else {
+        else 
             (*secondSize)++;
-        }
     }
-    //printf("\n\n Frontsize : %d\n\n Secondsiez : %d\n ", *frontSize, *secondSize);
     *Front = (int **)calloc(*frontSize, sizeof(int *));
     *Second = (int **)calloc(*secondSize, sizeof(int *));
-    if (*Front == NULL || *Second == NULL) {
-        perror("Erreur d'allocation de mémoire");
-        exit(EXIT_FAILURE);
-    }
+
     int a = 0, b = 0;
-    for (int i1 = 0; i1 < 2; i1++) {
+    for (int i1 = 0; i1 < n_rows; i1++) {
         int dominated_coeffiscient = 0;
-        for (int i2 = 0; i2 < 2; i2++) {
-            if (is_dominated(i1, i2, GroupMonarchs[i1], GroupMonarchs[i2], costTable, delayTable, num_cols)) {
-                dominated_coeffiscient++;
-            }
-        }
+        for (int i2 = 0; i2 < n_rows; i2++) 
+            dominated_coeffiscient += is_dominated(i1, i2, GroupMonarchs[i1], GroupMonarchs[i2], costTable, delayTable, num_cols);
         if (dominated_coeffiscient == 0) {
             (*Front)[a] = (int *)malloc(num_cols * sizeof(int));
-            if ((*Front)[a] == NULL) {
-                perror("Erreur d'allocation de mémoire pour Front[a]");
-                exit(EXIT_FAILURE);
-            }
-            // Copier les éléments de GroupMonarchs[i1] dans Front[a]
-            for (int j = 0; j < num_cols; j++) {
+            for (int j = 0; j < num_cols; j++) 
                 (*Front)[a][j] = GroupMonarchs[i1][j];
-            }
             a++;
-        } else {
+        }
+        else {
             (*Second)[b] = (int *)malloc(num_cols * sizeof(int));
-            if ((*Second)[b] == NULL) {
-                perror("Erreur d'allocation de mémoire pour Second[b]");
-                exit(EXIT_FAILURE);
-            }
-            // Copier les éléments de GroupMonarchs[i1] dans Second[b]
-            for (int j = 0; j < num_cols; j++) {
+            for (int j = 0; j < num_cols; j++) 
                 (*Second)[b][j] = GroupMonarchs[i1][j];
-            }
+
             b++;
         }
     }
@@ -112,12 +88,12 @@ Unsorted_Pareto sortingMonarch(int ** Pop, int ** Front, int ** Second)
 }
 */
 
-void sortingMonarch(int ** population, float** sortCost, float** sortDelay, int *** Front, int *frontSize, double ** costTable, double ** delayTable, int num_cols)
+void sortingMonarch(int ** population, float** sortCost, float** sortDelay, int *** Front, int *frontSize, double ** costTable, double ** delayTable, int num_cols, int num_rows)
 {
         int **Second = NULL;
         
         int secondSize = 0;
-        dominationSort(population, costTable, delayTable, num_cols, Front, &Second, frontSize, &secondSize);
+        dominationSort(population, costTable, delayTable, num_cols, Front, &Second, frontSize, &secondSize, num_rows);
 
         free2DTable((void**)Second, secondSize);
 
