@@ -9,9 +9,10 @@ int**  migration_operator(int **NP1, int **NP2,int n_rows, int n_cols, float p){
     for (int indexMonarch = 0; indexMonarch < n_rows; indexMonarch++) {
         for (int indexGenome = 0; indexGenome < n_cols; indexGenome++) {
             float tirage = (float)rand()/(float)(RAND_MAX);
-        
+            printf("tirage = %f\n",tirage);
             if (0.5 < p) {
                 int autremonarch = rand() % n_rows;
+                printf("autremonarch = %d\n",autremonarch);
                 NP1[indexMonarch][indexGenome] = NP1[autremonarch][indexGenome];
             } else {
                 int autremonarch = rand() % n_rows;
