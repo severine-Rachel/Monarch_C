@@ -3,6 +3,7 @@
 
 CMakeFiles/Executable.dir/src/main.c.o
  /home/rachel/Documents/projets_personnels/codes/butterfly/src/main.c
+ /home/rachel/Documents/projets_personnels/codes/butterfly/headers/Monarch_algo.h
  /home/rachel/Documents/projets_personnels/codes/butterfly/headers/Monarch_gen.h
  /home/rachel/Documents/projets_personnels/codes/butterfly/headers/Monarch_selec.h
  /home/rachel/Documents/projets_personnels/codes/butterfly/headers/Monarch_sort.h
@@ -11,7 +12,9 @@ CMakeFiles/Executable.dir/src/main.c.o
  /home/rachel/Documents/projets_personnels/codes/butterfly/headers/deepcopy.h
  /home/rachel/Documents/projets_personnels/codes/butterfly/headers/instance_gen.h
  /home/rachel/Documents/projets_personnels/codes/butterfly/headers/operator.h
+ /home/rachel/Documents/projets_personnels/codes/butterfly/headers/register_csv.h
  /home/rachel/Documents/projets_personnels/codes/butterfly/headers/utils.h
+ /home/rachel/Documents/projets_personnels/codes/butterfly/src/Monarch_algo.c
  /home/rachel/Documents/projets_personnels/codes/butterfly/src/Monarch_gen.c
  /home/rachel/Documents/projets_personnels/codes/butterfly/src/Monarch_selec.c
  /home/rachel/Documents/projets_personnels/codes/butterfly/src/Monarch_sort.c
@@ -20,6 +23,7 @@ CMakeFiles/Executable.dir/src/main.c.o
  /home/rachel/Documents/projets_personnels/codes/butterfly/src/deepcopy.c
  /home/rachel/Documents/projets_personnels/codes/butterfly/src/instance_gen.c
  /home/rachel/Documents/projets_personnels/codes/butterfly/src/operator.c
+ /home/rachel/Documents/projets_personnels/codes/butterfly/src/register_csv.c
  /home/rachel/Documents/projets_personnels/codes/butterfly/src/utils.c
  /usr/include/alloca.h
  /usr/include/endian.h

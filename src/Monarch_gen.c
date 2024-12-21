@@ -21,7 +21,6 @@ int ** generate_population(int num_tasks, int num_monarch) {
         generate_solution(Population[i], num_tasks);
     }
     
-    printf("\npopulation générée\n");
 
 
     return Population;

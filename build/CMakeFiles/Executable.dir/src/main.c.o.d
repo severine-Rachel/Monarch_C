@@ -10,7 +10,8 @@ CMakeFiles/Executable.dir/src/main.c.o: \
  /home/rachel/Documents/projets_personnels/codes/butterfly/headers/best_worst.h \
  /home/rachel/Documents/projets_personnels/codes/butterfly/headers/utils.h \
  /home/rachel/Documents/projets_personnels/codes/butterfly/headers/Monarch_selec.h \
- /home/rachel/Documents/projets_personnels/codes/butterfly/src/instance_gen.c \
+ /home/rachel/Documents/projets_personnels/codes/butterfly/headers/Monarch_algo.h \
+ /home/rachel/Documents/projets_personnels/codes/butterfly/headers/register_csv.h \
  /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -37,8 +38,9 @@ CMakeFiles/Executable.dir/src/main.c.o: \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
  /usr/include/x86_64-linux-gnu/bits/stdio2-decl.h \
  /usr/include/x86_64-linux-gnu/bits/stdio.h \
- /usr/include/x86_64-linux-gnu/bits/stdio2.h /usr/include/stdlib.h \
- /usr/include/x86_64-linux-gnu/bits/waitflags.h \
+ /usr/include/x86_64-linux-gnu/bits/stdio2.h \
+ /home/rachel/Documents/projets_personnels/codes/butterfly/src/instance_gen.c \
+ /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
  /usr/include/x86_64-linux-gnu/sys/types.h \
  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
@@ -89,4 +91,6 @@ CMakeFiles/Executable.dir/src/main.c.o: \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /home/rachel/Documents/projets_personnels/codes/butterfly/src/utils.c \
- /home/rachel/Documents/projets_personnels/codes/butterfly/src/Monarch_selec.c
+ /home/rachel/Documents/projets_personnels/codes/butterfly/src/Monarch_selec.c \
+ /home/rachel/Documents/projets_personnels/codes/butterfly/src/Monarch_algo.c \
+ /home/rachel/Documents/projets_personnels/codes/butterfly/src/register_csv.c

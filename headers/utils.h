@@ -14,5 +14,7 @@ void printIntTable(int** table, int n_row, int n_col, char* message);
 void printDoubleTable(double** table, int n_row, int n_col, char* message);
 void printFloatTable(float* table, int n_cols, char* message);
 void print1DIntTable(int*  table, int n_cols, char* message);
+int** Assembler(int ** population, int ** swarm1, int ** swarm2, int num_monarch, int num_swarm, int num_tasks);
+void dividePop(int ** population, int ** swarm1, int ** swarm2, int num_monarch, int num_swarm, int num_tasks);
 void free2DTable(void** table, int size) ;
 #endif

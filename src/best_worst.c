@@ -7,7 +7,7 @@
 
 // faire un test unitaire de cette fonction
 
-void determineBestMonarch(int ** population, double ** costTable, double ** delayTable, int num_cols, int bin, int ** bestMonarch, int num_rows){
+void determineBestMonarch(int ** population, double ** costTable, double ** delayTable, int num_cols, float bin, int ** bestMonarch, int num_rows){
     float proba = (float)rand() / RAND_MAX;
     if (proba > bin){ //Random selection of Monarch of the Front
         int **Front = NULL;
@@ -88,3 +88,55 @@ int determineWorstMonarch(int ** population, double ** costTable, double ** dela
     free(Crowding);
     return indexWorstMonarch;
 }
+
+
+
+//idée pour réduire un tableau
+/*
+
+void removeMin(int *arr, int *size) {
+    if (*size == 0) {
+        printf("Le tableau est vide.\n");
+        return;
+    }
+
+    // Étape 1: Trouver la valeur minimale et son index
+    int minIndex = 0;
+    for (int i = 1; i < *size; i++) {
+        if (arr[i] < arr[minIndex]) {
+            minIndex = i;
+        }
+    }
+
+    // Étape 2: Déplacer les éléments vers la gauche pour retirer le minimum
+    for (int i = minIndex; i < *size - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+
+    // Étape 3: Réduire la taille du tableau
+    (*size)--; // On réduit la taille du tableau
+
+    printf("Tableau après suppression du minimum: ");
+    for (int i = 0; i < *size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int arr[] = {1, 5, 6, 8};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Tableau original: ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    removeMin(arr, &size);
+
+    return 0;
+}
+
+
+*/

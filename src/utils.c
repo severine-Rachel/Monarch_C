@@ -135,7 +135,7 @@ void printIntTable(int** table, int n_row, int n_col, char* message){
     printf("%s", message);
     for (int i = 0; i < n_row; i++) {
         for (int j = 0; j < n_col; j++) {
-            printf("%d ", table[i][j]);
+            printf("%d, ", table[i][j]);
         }
         printf("\n\n");
     }
@@ -154,7 +154,7 @@ void printDoubleTable(double** table, int n_row, int n_col, char* message) {
 void printFloatTable(float* table, int n_cols, char* message){
     printf("%s", message);
     for (int i = 0; i< n_cols; i++){
-        printf(" %f", table[i]);
+        printf("%f, ", table[i]);
     }
     printf("\n\n");
 }
@@ -165,6 +165,48 @@ void print1DIntTable(int*  table, int n_cols, char* message){
     }
     printf("\n\n");
 }
+
+
+int** Assembler(int ** population, int ** swarm1, int ** swarm2, int num_monarch, int num_swarm, int num_tasks){
+    int n_all = num_monarch + num_swarm*2;
+    int **AllMonarch = (int **)malloc(n_all * sizeof(int *));
+    for (int i = 0; i < n_all; i++) {
+        AllMonarch[i] = (int *)malloc(num_tasks * sizeof(int));
+    }
+    for (int i = 0; i < num_swarm; i++) {
+        for (int j = 0; j < num_tasks; j++) {
+            AllMonarch[i][j] = swarm1[i][j];
+        }
+    }
+    for (int i = num_swarm; i < num_monarch; i++) {
+        for (int j = 0; j < num_tasks; j++) {
+            AllMonarch[i][j] = swarm2[i - num_swarm][j];
+        }
+    }
+    for (int i = num_monarch; i < n_all; i++) {
+        for (int j = 0; j < num_tasks; j++) {
+            AllMonarch[i][j] = population[i - num_monarch][j];
+        }
+    }
+    return AllMonarch;
+}
+
+void dividePop(int ** population, int ** swarm1, int ** swarm2, int num_monarch, int num_swarm, int num_tasks){
+    for (int i = 0; i < num_swarm; i++) {
+        for (int j = 0; j < num_tasks; j++) {
+            swarm1[i][j] = population[i][j];
+        }
+    }
+
+    //printIntTable(swarm1, num_swarm, num_tasks, "Swarm 1 :\n");
+    
+    for (int i = num_swarm; i < num_monarch; i++) {
+        for (int j = 0; j < num_tasks; j++) {
+            swarm2[i - num_swarm][j] = population[i][j];
+        }
+    }
+}
+
 void free2DTable(void** table, int size) {
     for (int i = 0; i < size; i++) {
         free(table[i]);
